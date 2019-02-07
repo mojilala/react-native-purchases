@@ -1,4 +1,4 @@
-package com.reactlibrary;
+package com.RNRevenueCat;
 
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -192,9 +192,13 @@ public class RNPurchasesModule extends ReactContextBaseJavaModule implements Pur
         checkPurchases();
 
         ArrayList<String> oldSkusList = new ArrayList<>();
-        for (Object oldSku : oldSkus.toArrayList()) {
-            oldSkusList.add((String)oldSku);
+        for (int i = 0; i < oldSkus.size(); i++) {
+            oldSkusList.add((String)oldSkus.getString(i));
         }
+
+//        for (Object oldSku : oldSkus.toArrayList()) {
+//            oldSkusList.add((String)oldSku);
+//        }
 
         Purchases.getSharedInstance().makePurchase(getCurrentActivity(), productIdentifier, type, oldSkusList);
     }
